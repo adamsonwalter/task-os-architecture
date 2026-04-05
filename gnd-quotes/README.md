@@ -9,7 +9,7 @@ Minimal **Claude Cowork** workspace for **GND Optus civil / HDD quoting**.
 | `Instructions/` | Constitution, SKILLs, ingestion, system prompt, SOP |
 | `Reference/` | Master BOM/BOQ, rates, standards |
 | `Inputs/` | Job PDFs per engagement |
-| `Output/` | **Live** quotes and deliverables — two files per job (Internal Control + Submission Clean) |
+| `Output/` | **Live** quotes and deliverables — two files per job (Internal Control + Submission Clean). If you see `.~lock.*` here, that is LibreOffice’s **lock sidecar** (created while an `.xlsx` is open), not the workbook; it is git-ignored. Commit the real `.xlsx` files when you want them versioned. |
 | `Golden_Templates/` | **Example** xlsx shape / quality bar — copy from here, save work in `Output/` |
 | `docs/` | Human-readable SOP (`sop.html`) — open in browser |
 
