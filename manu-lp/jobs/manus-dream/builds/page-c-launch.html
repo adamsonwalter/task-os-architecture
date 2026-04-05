@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manu's Dream — Something Magical Is Coming to Spotify</title>
+  <meta name="description" content="Manu's Dream is arriving on Spotify. A debut children's audiobook about a dog who dares to dream at Old Trafford. Follow now to be first." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #DA291C;
+      --red-dark: #b02016;
+      --gold: #FFC700;
+      --spotify: #1DB954;
+      --dark: #080808;
+      --dark2: #111;
+      --dark3: #1a1a1a;
+      --text: #F0F0F0;
+      --muted: #777;
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark);
+      color: var(--text); line-height: 1.6; overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(8,8,8,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-brand { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .nav-brand span { color: var(--red); }
+    .nav-badge {
+      background: var(--red); color: #fff; font-size: 0.7rem; font-weight: 700;
+      padding: 0.25rem 0.6rem; border-radius: 50px; letter-spacing: 0.05em;
+      text-transform: uppercase; animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
+    .nav-cta {
+      background: var(--spotify); color: #000; font-weight: 700; font-size: 0.85rem;
+      padding: 0.5rem 1.3rem; border-radius: 50px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: scale(1.04); box-shadow: 0 4px 24px rgba(29,185,84,0.4); }
+
+    /* COUNTDOWN LAUNCH BAR */
+    .launch-bar {
+      margin-top: 72px;
+      background: linear-gradient(90deg, #0d0d0d, #1a0808, #0d0d0d);
+      border-bottom: 1px solid rgba(218,41,28,0.25);
+      padding: 0.65rem 2rem; text-align: center;
+      font-size: 0.85rem; color: #ccc;
+    }
+    .launch-bar strong { color: var(--gold); }
+
+    /* HERO - LAUNCH PAGE FEEL */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 5rem 2rem 4rem; position: relative; overflow: hidden;
+    }
+    /* Animated glow */
+    .glow-orb {
+      position: absolute; border-radius: 50%; filter: blur(80px);
+      pointer-events: none; animation: drift 8s ease-in-out infinite;
+    }
+    @keyframes drift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(30px,-20px) scale(1.1); }
+      66% { transform: translate(-20px,30px) scale(0.9); }
+    }
+    .glow-red { width: 500px; height: 500px; background: rgba(218,41,28,0.12); top: -100px; right: -100px; }
+    .glow-gold { width: 300px; height: 300px; background: rgba(255,199,0,0.06); bottom: 0; left: -50px; animation-delay: -3s; }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+
+    /* COMING SOON CHIP */
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(29,185,84,0.1); border: 1px solid rgba(29,185,84,0.3);
+      color: var(--spotify); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
+    }
+    .chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--spotify); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 1.25rem;
+      color: #fff;
+    }
+    h1 .accent-red {
+      background: linear-gradient(135deg, var(--red), #ff6b5e);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h1 .accent-gold {
+      background: linear-gradient(135deg, var(--gold), #ff9900);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subhead { font-size: 1.1rem; color: #bbb; max-width: 440px; margin-bottom: 2rem; line-height: 1.75; }
+    .cta-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 0.85rem; }
+    .btn-spotify {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--spotify); color: #000;
+      font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 700;
+      padding: 1rem 2.2rem; border-radius: 50px; text-decoration: none;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+      box-shadow: 0 0 40px rgba(29,185,84,0.3);
+    }
+    .btn-spotify:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 50px rgba(29,185,84,0.5); }
+    .btn-spotify svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .micro { font-size: 0.82rem; color: var(--muted); }
+    .micro span { color: var(--spotify); margin-right: 0.3rem; }
+
+    /* VISUAL RIGHT */
+    .hero-right { position: relative; display: flex; justify-content: center; align-items: center; }
+    .reveal-frame {
+      position: relative; width: 100%; max-width: 380px;
+    }
+    /* Spotlight glow */
+    .reveal-frame::before {
+      content: '';
+      position: absolute; inset: -30px;
+      background: radial-gradient(ellipse at center, rgba(218,41,28,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: spotlight 3s ease-in-out infinite;
+    }
+    @keyframes spotlight { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
+    .reveal-frame img {
+      position: relative; z-index: 2;
+      width: 100%; border-radius: 14px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(218,41,28,0.2);
+      animation: levitate 6s ease-in-out infinite;
+    }
+    @keyframes levitate { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+    .reveal-label {
+      position: absolute; z-index: 3;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+      border: 1px solid rgba(218,41,28,0.4);
+      padding: 0.75rem 1.5rem; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 700; white-space: nowrap;
+      color: var(--gold); opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .reveal-frame:hover .reveal-label { opacity: 1; }
+    .reveal-frame:hover img { filter: brightness(0.5); }
+
+    /* SECTION BASE */
+    section { padding: 5rem 2rem; }
+    .s-inner { max-width: 1050px; margin: 0 auto; }
+    .s-label { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--red); margin-bottom: 0.6rem; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.8rem; }
+    .s-sub { font-size: 0.95rem; color: #999; max-width: 540px; margin-bottom: 2.5rem; }
+
+    /* WHY NOW */
+    .why-now { background: var(--dark2); }
+    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .why-card {
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .why-card:hover { transform: translateY(-4px); border-color: rgba(218,41,28,0.25); }
+    .why-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .why-card p { font-size: 0.85rem; color: #888; line-height: 1.6; }
+    .why-outcome { font-size: 0.8rem; color: var(--spotify); margin-top: 0.6rem; font-weight: 600; }
+
+    /* THE STORY */
+    .story { background: var(--dark); }
+    .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .story-image { position: relative; }
+    .story-image img { width: 100%; max-width: 340px; border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+    .story-excerpt {
+      background: var(--dark2); border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.5rem; margin-top: 1.5rem;
+      font-style: italic; font-size: 0.92rem; color: #ddd; line-height: 1.75;
+    }
+    .story-content h2 { margin-bottom: 1rem; }
+    .story-content p { font-size: 0.95rem; color: #aaa; line-height: 1.8; margin-bottom: 1rem; }
+    .story-content p strong { color: #fff; }
+
+    /* AUDIENCE */
+    .audience { background: var(--dark2); }
+    .audience-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .aud-card {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--dark); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .aud-card:hover { border-color: rgba(255,199,0,0.25); }
+    .aud-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .aud-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .aud-card p { font-size: 0.88rem; color: #888; line-height: 1.6; }
+
+    /* FAQ */
+    .faq { background: var(--dark); }
+    .faq-list { max-width: 700px; display: flex; flex-direction: column; gap: 0.75rem; }
+    details {
+      background: var(--dark2); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    summary {
+      padding: 1.2rem 1.5rem; font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: color 0.2s;
+    }
+    summary:hover { color: var(--gold); }
+    summary::after { content: '+'; font-size: 1.3rem; color: var(--muted); transition: transform 0.3s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { padding: 0 1.5rem 1.2rem; font-size: 0.9rem; color: #999; }
+
+    /* LAUNCH CTA */
+    .launch-cta {
+      background: var(--dark2);
+      border-top: 1px solid rgba(218,41,28,0.15);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .launch-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(29,185,84,0.07) 0%, transparent 60%);
+    }
+    .launch-inner { position: relative; z-index: 2; max-width: 580px; margin: 0 auto; }
+    .launch-inner h2 { color: #fff; margin-bottom: 0.5rem; }
+    .launch-inner p { color: #999; font-size: 1rem; margin-bottom: 2rem; }
+    .launch-features { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+    .lf-chip {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.45rem 1rem; border-radius: 50px; font-size: 0.82rem; color: #ccc;
+    }
+    .launch-inner .btn-spotify { margin: 0 auto; max-width: 420px; display: inline-flex; justify-content: center; }
+    .share-line { margin-top: 1.25rem; font-size: 0.85rem; color: var(--muted); }
+    .share-line a { color: var(--muted); text-decoration: underline; }
+
+    /* STICKY */
+    .sticky {
+      position: fixed; bottom: 0; width: 100%; z-index: 99;
+      background: rgba(8,8,8,0.96); backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(29,185,84,0.2);
+      padding: 0.8rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      transform: translateY(100%); transition: transform 0.4s ease;
+    }
+    .sticky.visible { transform: translateY(0); }
+    .sticky-text { font-size: 0.88rem; color: #ccc; }
+    .sticky .btn-spotify { padding: 0.6rem 1.4rem; font-size: 0.88rem; }
+
+    footer {
+      background: #050505; padding: 2rem; text-align: center;
+      font-size: 0.78rem; color: #444; border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    @media(max-width:768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .reveal-frame { max-width: 260px; margin: 0 auto; }
+      .why-grid { grid-template-columns: 1fr; }
+      .story-layout { grid-template-columns: 1fr; }
+      .audience-cards { grid-template-columns: 1fr; }
+      .sticky { flex-direction: column; }
+      .launch-features { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">MANU'S <span>DREAM</span></div>
+    <div class="nav-badge">🎧 Coming Soon</div>
+    <a href="#launch" class="nav-cta">Follow on Spotify</a>
+  </nav>
+
+  <!-- LAUNCH BAR -->
+  <div class="launch-bar">
+    🐾 A debut children's audiobook arriving on Spotify — <strong>Be first to follow</strong>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="glow-orb glow-red"></div>
+    <div class="glow-orb glow-gold"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="chip">
+          <div class="chip-dot"></div>
+          Arriving Soon on Spotify
+        </div>
+        <h1>Something <span class="accent-gold">magical</span> is coming <span class="accent-red">to Spotify</span></h1>
+        <p class="subhead">Manu's Dream — a heartwarming children's audiobook about a dog who dares to believe in the impossible. For youngsters and Manchester fans alike.</p>
+        <div class="cta-stack">
+          <a href="#launch" class="btn-spotify" id="hero-cta">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Follow on Spotify — Be First
+          </a>
+          <p class="micro"><span>✓</span>Free · <span>✓</span>Ages 3–8 · <span>✓</span>One tap to follow</p>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="reveal-frame">
+          <img src="./book-cover.jpeg" alt="Manu's Dream audiobook cover — coming soon to Spotify" />
+          <div class="reveal-label">🎧 Coming to Spotify</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOW -->
+  <section class="why-now">
+    <div class="s-inner">
+      <span class="s-label">Why Follow Now</span>
+      <h2>Three reasons not to wait</h2>
+      <p class="s-sub">This is a debut — once it's out, the moment to be first is gone.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🔔</div>
+          <h3>Get notified the moment it drops</h3>
+          <p>No newsletter, no email form. Just follow on Spotify and you'll hear about it before anyone else — automatically.</p>
+          <div class="why-outcome">→ Zero effort, maximum timing</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🎁</div>
+          <h3>Free for all Spotify users</h3>
+          <p>No premium subscription needed. No purchase required. Manu's Dream is a gift to every young listener on the platform.</p>
+          <div class="why-outcome">→ One tap to access when live</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📢</div>
+          <h3>Be the one who shares it first</h3>
+          <p>Send it to every Red family you know before they find it themselves. That's a moment. Don't miss it.</p>
+          <div class="why-outcome">→ Be the messenger of the dream</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE STORY -->
+  <section class="story">
+    <div class="s-inner">
+      <div class="story-layout">
+        <div class="story-image">
+          <img src="./book-cover.jpeg" alt="Manu's Dream book cover" />
+          <div class="story-excerpt">
+            "Meet Manu — a spirited red and white dog who lives and breathes football. But there's one dream he carries in his heart: to one day score a goal at Old Trafford, the home of his heroes."
+          </div>
+        </div>
+        <div class="story-content">
+          <span class="s-label">The Story</span>
+          <h2>The dog who dared to dream at Old Trafford</h2>
+          <p><strong>Everyone says it's impossible.</strong> After all, dogs don't play football. But Manu has a secret weapon: belief.</p>
+          <p>Guided by a magical dream and a legacy passed down from his dad and grandad, Manu finds himself in the middle of a once-in-a-lifetime match — with the crowd roaring, his family behind him, and the goal just ahead.</p>
+          <p>Written by Paul B, a lifelong Manchester United fan whose love for the beautiful game came from his father, just as Manu's did. <strong>This is a story that only someone who truly understands what it means to support United could write.</strong></p>
+          <p style="margin-top:1.5rem;">Perfect for young readers aged 3–8. Poetic. Heartwarming. Built for the biggest stage — a child's imagination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="audience">
+    <div class="s-inner">
+      <span class="s-label">This is for</span>
+      <h2>Made for everyone who loves the dream</h2>
+      <div class="audience-cards">
+        <div class="aud-card">
+          <div class="aud-icon">👶</div>
+          <div>
+            <h4>Little ones aged 3–8</h4>
+            <p>Poetic language, a loveable hero, and a message they'll carry for years: your dream is worth chasing, no matter what anyone says.</p>
+          </div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">🔴</div>
+          <div>
+            <h4>Manchester United families</h4>
+            <p>Old Trafford. The theatre of dreams. Every United family knows the feeling — now there's a story that passes it to the next generation.</p>
+          </div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">⚽</div>
+          <div>
+            <h4>Football-mad parents & grandparents</h4>
+            <p>The story of Manu's dad and grandad passing down the dream mirrors what football really is — heritage. Pride. Family. Forever.</p>
+          </div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-icon">🎧</div>
+          <div>
+            <h4>Anyone with a Spotify account</h4>
+            <p>No app. No purchase. No barrier. If you have Spotify, Manu's Dream is yours the moment it launches. Follow now to be ready.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="s-inner">
+      <span class="s-label">Questions</span>
+      <h2>Everything you need to know</h2>
+      <div class="faq-list">
+        <details>
+          <summary>When does Manu's Dream launch on Spotify?</summary>
+          <p>Coming soon — follow now and Spotify will notify you the moment it goes live. You won't need to check back; the story will come to you.</p>
+        </details>
+        <details>
+          <summary>Is it really free to listen?</summary>
+          <p>Yes, available to all Spotify users — no premium subscription required. One follow, one tap when it launches, and the story begins.</p>
+        </details>
+        <details>
+          <summary>Is it only for Manchester United fans?</summary>
+          <p>The football love gives it heart — but the core story is universal. Every child who has ever been told something is impossible will find their champion in Manu.</p>
+        </details>
+        <details>
+          <summary>What age is it for?</summary>
+          <p>3–8 is the sweet spot, but honestly the adults in the room tend to feel it the most. It's a multigenerational story — written to be shared.</p>
+        </details>
+        <details>
+          <summary>Can I share this page?</summary>
+          <p>Please do. Every Red family should know this story is coming. Share with your squad, your group chats, your fellow dreamers.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAUNCH CTA -->
+  <section class="launch-cta" id="launch">
+    <div class="s-inner">
+      <div class="launch-inner">
+        <span class="s-label" style="display:block;margin-bottom:0.75rem;">The Moment is Almost Here</span>
+        <h2>Be the first to hear Manu's Dream</h2>
+        <p>Follow on Spotify now. One tap. The rest happens automatically — you'll be notified the moment the dream goes live.</p>
+        <div class="launch-features">
+          <div class="lf-chip">🎧 Coming to Spotify</div>
+          <div class="lf-chip">⚽ Manchester United</div>
+          <div class="lf-chip">🐾 Ages 3–8</div>
+          <div class="lf-chip">✓ Free to Listen</div>
+          <div class="lf-chip">🔔 Follow for Alerts</div>
+        </div>
+        <a href="https://open.spotify.com" class="btn-spotify" id="final-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Follow Manu's Dream on Spotify
+        </a>
+        <p class="share-line">Know a Red family? <a href="#">Share this page</a> with them now.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Manu's Dream © 2025 Paul B · Debut Children's Audiobook · Coming to Spotify</p>
+  </footer>
+
+  <!-- STICKY -->
+  <div class="sticky" id="stickyEl">
+    <span class="sticky-text">🐾 <strong>Manu's Dream</strong> — Coming soon to Spotify <span style="color:#777;">· Ages 3–8 · Free</span></span>
+    <a href="#launch" class="btn-spotify">Follow Now — It's Free</a>
+  </div>
+
+  <script>
+    const sticky = document.getElementById('stickyEl');
+    window.addEventListener('scroll', () => {
+      sticky.classList.toggle('visible', window.scrollY > 380);
+    });
+  </script>
+</body>
+</html>

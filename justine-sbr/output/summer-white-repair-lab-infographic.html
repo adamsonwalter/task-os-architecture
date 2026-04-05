@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Dashboard — Repair Lab | Summer White</title>
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #1a237e;      /* Deep Navy */
+            --secondary: #0d47a1;    /* Corporate Blue */
+            --accent: #ffc107;       /* Gold */
+            --success: #10b981;      /* Emerald */
+            --warning: #f43f5e;      /* Rose */
+            --slate: #475569;        /* Slate */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        h1, h2, h3, .font-outfit {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .navy-gradient {
+            background: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+        }
+
+        .stat-glow {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(26, 35, 126, 0.1);
+        }
+
+        /* Chart container ensuring height for Chart.js */
+        .chart-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            background: var(--primary);
+            box-shadow: 0 0 0 4px #f1f5f9;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-container::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+                height: 100%;
+                width: 2px;
+                background: #e2e8f0;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+    <!-- Header with Premium Background -->
+    <header class="relative overflow-hidden text-white py-16">
+        <!-- Background Asset using direct path from tool output -->
+        <div class="absolute inset-0 z-0">
+            <img src="/Users/walter/.gemini/antigravity/brain/e4d4b352-5f68-45de-9841-33bbc5692aa5/premium_business_background_1774925731185.png" alt="Background" class="w-full h-full object-cover brightness-[0.35]">
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end">
+                <div>
+                    <span class="inline-block bg-accent px-3 py-1 rounded text-primary text-xs font-bold uppercase tracking-widest mb-4">Strategic Business Review</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-2">Summer White</h1>
+                    <p class="text-2xl font-light opacity-90">Director — Repair Lab</p>
+                </div>
+                <div class="mt-8 md:mt-0 text-left md:text-right">
+                    <div class="text-sm font-medium opacity-70 mb-1 leading-none">Status: Active Strategy</div>
+                    <div class="text-lg font-bold text-accent">Stage: GROWTH / MATURITY</div>
+                    <div class="text-xs opacity-50 mt-2">© 31-MAR-2026 | Morgan Management Group</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 -mt-8 relative z-20 pb-20">
+        
+        <!-- Executive Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="glass-card rounded-2xl p-8 border-t-4 border-indigo-600">
+                <h2 class="text-xl font-bold text-primary mb-4 flex items-center">
+                    <span class="mr-2 italic">Truth:</span> Demand is High
+                </h2>
+                <p class="text-slate-600 leading-relaxed italic border-l-2 border-indigo-100 pl-4">
+                    "Repair Lab is converting beautifully into a business that is still entirely dependent on Summer's next job. Revenue is present. Rhythm is not."
+                </p>
+            </div>
+            <div class="glass-card rounded-2xl p-8 border-t-4 border-accent">
+                <h2 class="text-xl font-bold text-primary mb-4 flex items-center">
+                    <span class="mr-2 italic">Lever:</span> Predictable Work
+                </h2>
+                <p class="text-slate-600 leading-relaxed italic border-l-2 border-amber-100 pl-4">
+                    "Predictable, recurring, lower-complexity work (the oil changes) keeps the revenue floor stable while Summer builds and grows."
+                </p>
+            </div>
+        </div>
+
+        <!-- Business Vitals Dashboard -->
+        <section class="mb-16">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-primary mb-2">📊 Diagnostic Performance</h2>
+                    <p class="text-slate-500">Business vital scores mapped against benchmarks</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Gauge 1 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col items-center">
+                    <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Revenue Rhythm</h3>
+                    <div class="chart-container">
+                        <canvas id="gauge1"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-3xl font-bold stat-glow">50%</span>
+                        <p class="text-xs text-slate-400 mt-1 uppercase font-medium">Oxygen Present</p>
+                    </div>
+                </div>
+
+                <!-- Gauge 2 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col items-center">
+                    <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Op. Maturity</h3>
+                    <div class="chart-container">
+                        <canvas id="gauge2"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-3xl font-bold stat-glow">35%</span>
+                        <p class="text-xs text-slate-400 mt-1 uppercase font-medium">Stage vs Show</p>
+                    </div>
+                </div>
+
+                <!-- Gauge 3 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col items-center">
+                    <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Sales Precision</h3>
+                    <div class="chart-container">
+                        <canvas id="gauge3"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-3xl font-bold stat-glow">85%</span>
+                        <p class="text-xs text-slate-400 mt-1 uppercase font-medium">Conversion Focus</p>
+                    </div>
+                </div>
+
+                <!-- Gauge 4 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col items-center">
+                    <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Team Clarity</h3>
+                    <div class="chart-container">
+                        <canvas id="gauge4"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-3xl font-bold stat-glow">40%</span>
+                        <p class="text-xs text-slate-400 mt-1 uppercase font-medium">Head vs System</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <!-- Pivot Bar Chart -->
+            <div class="glass-card rounded-3xl p-10">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-primary mb-2">The Pivot Mechanics</h2>
+                    <p class="text-slate-500 text-sm italic">"Moving from Solo Hustle to Predictable Revenue"</p>
+                </div>
+                <div class="relative h-[400px]">
+                    <canvas id="barPivot"></canvas>
+                </div>
+            </div>
+
+            <!-- Projection Line Chart -->
+            <div class="glass-card rounded-3xl p-10">
+                <div class="mb-8 text-right">
+                    <h2 class="text-2xl font-bold text-primary mb-2">Compounding Progress</h2>
+                    <p class="text-slate-500 text-sm italic">"The Rhythm Effect over 12 Months"</p>
+                </div>
+                <div class="relative h-[400px]">
+                    <canvas id="lineRhythm"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12-Month Timeline -->
+        <section>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4 tracking-tight">🗓️ 12-Month Guided Rhythm</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Moving Repair Lab from transactional uncertainty to a recurring, sellable asset.</p>
+            </div>
+
+            <div class="relative timeline-container max-w-4xl mx-auto px-10 md:px-0">
+                
+                <!-- Q1 -->
+                <div class="mb-16 md:flex md:justify-between items-start">
+                    <div class="md:w-[45%] text-left md:text-right pr-0 md:pr-12 relative flex">
+                        <div class="timeline-marker md:hidden"></div>
+                        <div class="md:hidden ml-4">
+                            <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-1">Months 1-3</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q1: Clarity, Cash, & Offer</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex md:w-[10%] justify-center relative mt-2">
+                        <div class="w-6 h-6 bg-primary rounded-full z-10 border-4 border-white shadow-lg"></div>
+                    </div>
+
+                    <div class="md:w-[45%] pl-4 md:pl-12">
+                        <div class="hidden md:block">
+                            <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-1">Months 1-3</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q1: Clarity, Cash, & Offer</h3>
+                        </div>
+                        <div class="bg-indigo-50 border-l-4 border-primary p-5 rounded-r-xl">
+                            <ul class="space-y-3 text-slate-600 text-sm font-medium">
+                                <li class="flex items-start"><span class="text-primary mr-2 opacity-60">↳</span> 13-week cash forecasting established</li>
+                                <li class="flex items-start"><span class="text-primary mr-2 opacity-60">↳</span> Core service margin diagnostics completed</li>
+                                <li class="flex items-start"><span class="text-primary mr-2 opacity-60">↳</span> "Oil Change" maintenance pilot launched</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="mb-16 md:flex md:justify-between items-start flex-row-reverse">
+                    <div class="md:w-[45%] text-left pl-0 md:pl-12 relative">
+                        <div class="timeline-marker md:hidden"></div>
+                        <div class="md:hidden ml-4">
+                            <span class="text-emerald-500 font-bold tracking-widest text-xs uppercase block mb-1">Months 4-6</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q2: Conversion & Cadence</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex md:w-[10%] justify-center relative mt-2">
+                        <div class="w-6 h-6 bg-emerald-500 rounded-full z-10 border-4 border-white shadow-lg"></div>
+                    </div>
+
+                    <div class="md:w-[45%] pr-4 md:pr-12 text-left md:text-right">
+                        <div class="hidden md:block">
+                            <span class="text-emerald-500 font-bold tracking-widest text-xs uppercase block mb-1">Months 4-6</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q2: Conversion & Cadence</h3>
+                        </div>
+                        <div class="bg-emerald-50 border-r-0 md:border-r-4 md:border-l-0 border-l-4 border-emerald-500 p-5 md:rounded-l-xl rounded-r-xl md:rounded-r-none">
+                            <ul class="space-y-3 text-slate-600 text-sm font-medium">
+                                <li class="flex items-start md:flex-row-reverse"><span class="md:ml-2 ml-0 mr-2 md:mr-0 text-emerald-500 opacity-60 transform md:rotate-180">↳</span> Retention follow-up automation set</li>
+                                <li class="flex items-start md:flex-row-reverse"><span class="md:ml-2 ml-0 mr-2 md:mr-0 text-emerald-500 opacity-60 transform md:rotate-180">↳</span> Whiteboard pipeline accountability rhythm</li>
+                                <li class="flex items-start md:flex-row-reverse"><span class="md:ml-2 ml-0 mr-2 md:mr-0 text-emerald-500 opacity-60 transform md:rotate-180">↳</span> 90-day rolling revenue chart live</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="mb-16 md:flex md:justify-between items-start">
+                    <div class="md:w-[45%] text-left md:text-right pr-0 md:pr-12 relative flex">
+                        <div class="timeline-marker md:hidden"></div>
+                        <div class="md:hidden ml-4">
+                            <span class="text-violet-500 font-bold tracking-widest text-xs uppercase block mb-1">Months 7-9</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q3: Leverage & Breathe</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex md:w-[10%] justify-center relative mt-2">
+                        <div class="w-6 h-6 bg-violet-500 rounded-full z-10 border-4 border-white shadow-lg"></div>
+                    </div>
+
+                    <div class="md:w-[45%] pl-4 md:pl-12">
+                        <div class="hidden md:block">
+                            <span class="text-violet-500 font-bold tracking-widest text-xs uppercase block mb-1">Months 7-9</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q3: Leverage & Breathe</h3>
+                        </div>
+                        <div class="bg-violet-50 border-l-4 border-violet-500 p-5 rounded-r-xl">
+                            <ul class="space-y-3 text-slate-600 text-sm font-medium">
+                                <li class="flex items-start"><span class="text-violet-500 mr-2 opacity-60">↳</span> Weekly Org-Chart function mapping</li>
+                                <li class="flex items-start"><span class="text-violet-500 mr-2 opacity-60">↳</span> First 3-day recovery "litmus test"</li>
+                                <li class="flex items-start"><span class="text-violet-500 mr-2 opacity-60">↳</span> Documented standard operating rituals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="md:flex md:justify-between items-start flex-row-reverse">
+                    <div class="md:w-[45%] text-left pl-0 md:pl-12 relative">
+                        <div class="timeline-marker md:hidden"></div>
+                        <div class="md:hidden ml-4">
+                            <span class="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-1">Months 10-12</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q4: Scale & Optionality</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex md:w-[10%] justify-center relative mt-2">
+                        <div class="w-6 h-6 bg-amber-500 rounded-full z-10 border-4 border-white shadow-lg"></div>
+                    </div>
+
+                    <div class="md:w-[45%] pr-4 md:pr-12 text-left md:text-right">
+                        <div class="hidden md:block">
+                            <span class="text-amber-500 font-bold tracking-widest text-xs uppercase block mb-1">Months 10-12</span>
+                            <h3 class="text-2xl font-bold mb-3 text-slate-800">Q4: Scale & Optionality</h3>
+                        </div>
+                        <div class="bg-amber-50 border-r-0 md:border-r-4 md:border-l-0 border-l-4 border-amber-500 p-5 md:rounded-l-xl rounded-r-xl md:rounded-r-none">
+                            <ul class="space-y-3 text-slate-600 text-sm font-medium">
+                                <li class="flex items-start md:flex-row-reverse"><span class="md:ml-2 ml-0 mr-2 md:mr-0 text-amber-500 opacity-60 transform md:rotate-180">↳</span> 12-month Drawings & Exit assessment</li>
+                                <li class="flex items-start md:flex-row-reverse"><span class="md:ml-2 ml-0 mr-2 md:mr-0 text-amber-500 opacity-60 transform md:rotate-180">↳</span> Consolidation of recurring model book</li>
+                                <li class="flex items-start md:flex-row-reverse"><span class="md:ml-2 ml-0 mr-2 md:mr-0 text-amber-500 opacity-60 transform md:rotate-180">↳</span> Strategic Planning for Year 2 Expansion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-white py-20 px-6 text-center overflow-hidden relative">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-3xl font-bold mb-6 italic">"A business that can breathe without you is not built through heroics. It is built through documented flow and a weekly drumbeat."</h2>
+            <div class="h-1 w-20 bg-accent mx-auto mb-10"></div>
+            <p class="text-sm opacity-60 uppercase tracking-widest">Analysis by Dr. Justine Hicks for Summer White | 2026</p>
+        </div>
+        <!-- Decorative subtle accent -->
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-accent opacity-5 blur-[120px] rounded-full translate-x-32 translate-y-32"></div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js failed to load');
+                return;
+            }
+
+            // Chart Configuration Factory
+            function createGauge(id, value, color) {
+                const ctx = document.getElementById(id).getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [value, 100 - value],
+                            backgroundColor: [color, '#f1f5f9'],
+                            borderWidth: 0,
+                            circumference: 180,
+                            rotation: -90,
+                        }]
+                    },
+                    options: {
+                        cutout: '80%',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            tooltip: { enabled: false },
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+
+            // Initialize Gauges
+            createGauge('gauge1', 50, '#1a237e');
+            createGauge('gauge2', 35, '#8b5cf6');
+            createGauge('gauge3', 85, '#10b981');
+            createGauge('gauge4', 40, '#f59e0b');
+
+            // Initialize Pivot Bar Chart
+            const pivotCtx = document.getElementById('barPivot').getContext('2d');
+            new Chart(pivotCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Monthly Leads', 'Conv. Rate (%)', 'Margin Visibility', 'Owner Hours/Week'],
+                    datasets: [
+                        {
+                            label: 'Current Status',
+                            data: [80, 95, 30, 50],
+                            backgroundColor: '#f1f5f9',
+                            borderColor: '#cbd5e1',
+                            borderWidth: 1,
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Strategic Target',
+                            data: [120, 98, 90, 30],
+                            backgroundColor: '#1a237e',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { display: false },
+                        y: { 
+                            grid: { display: false },
+                            ticks: { font: { weight: 'bold' } }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, usePointStyle: true, padding: 20 } }
+                    }
+                }
+            });
+
+            // Initialize Rhythm Projection
+            const rhythmCtx = document.getElementById('lineRhythm').getContext('2d');
+            new Chart(rhythmCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Start', 'Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [
+                        {
+                            label: 'Hustle Model (Volatile)',
+                            data: [45, 60, 48, 70, 55],
+                            borderColor: '#cbd5e1',
+                            borderDash: [5, 5],
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Rhythm Model (Steady)',
+                            data: [45, 55, 68, 82, 95],
+                            borderColor: '#1a237e',
+                            borderWidth: 4,
+                            tension: 0.3,
+                            fill: true,
+                            backgroundColor: 'rgba(26, 35, 126, 0.03)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { display: false, min: 0, max: 100 },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, usePointStyle: true, padding: 20 } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "Psychological persuasion hooks for landing page optimization",
+    "framework_sources": ["Cialdini", "Kahneman", "Hormozi", "Schwartz"],
+    "lastUpdated": "2025-01-23"
+  },
+  "core_principles": {
+    "reciprocity": {
+      "definition": "People feel obligated to return favors",
+      "landing_page_applications": [
+        "Lead magnet (free value first)",
+        "Free trial with full features",
+        "Free audit/assessment",
+        "Ungated valuable content"
+      ],
+      "copy_patterns": [
+        "Here's a free [valuable thing]",
+        "No strings attached",
+        "Our gift to you"
+      ]
+    },
+    "commitment_consistency": {
+      "definition": "People want to act consistently with prior commitments",
+      "landing_page_applications": [
+        "Micro-commitments (quiz, calculator)",
+        "Progress indicators",
+        "Email nurture before sale",
+        "Multi-step forms"
+      ],
+      "copy_patterns": [
+        "You've already taken the first step",
+        "Complete your registration",
+        "Since you're interested in [X]..."
+      ]
+    },
+    "social_proof": {
+      "definition": "People look to others' actions to determine their own",
+      "landing_page_applications": [
+        "Testimonials",
+        "User counts",
+        "Live activity notifications",
+        "Reviews and ratings"
+      ],
+      "copy_patterns": [
+        "Join 10,000+ [audience]",
+        "[X] people signed up today",
+        "Most popular choice"
+      ]
+    },
+    "authority": {
+      "definition": "People defer to credible experts",
+      "landing_page_applications": [
+        "Expert endorsements",
+        "Media mentions",
+        "Certifications",
+        "Founder/team credentials"
+      ],
+      "copy_patterns": [
+        "As recommended by [expert]",
+        "Featured in [publication]",
+        "Certified by [authority]"
+      ]
+    },
+    "liking": {
+      "definition": "People say yes to those they like",
+      "landing_page_applications": [
+        "Relatable testimonials",
+        "Founder story",
+        "Community emphasis",
+        "Shared values"
+      ],
+      "copy_patterns": [
+        "Built by [relatable founders]",
+        "For [audience] like you",
+        "We get it because we've been there"
+      ]
+    },
+    "scarcity": {
+      "definition": "People want what's limited or disappearing",
+      "landing_page_applications": [
+        "Limited time offers",
+        "Limited spots/inventory",
+        "Countdown timers",
+        "Exclusive access"
+      ],
+      "copy_patterns": [
+        "Only [X] spots left",
+        "Offer ends [date]",
+        "Limited beta access"
+      ]
+    },
+    "unity": {
+      "definition": "People favor those in their in-group",
+      "landing_page_applications": [
+        "Industry-specific language",
+        "Community identity",
+        "Shared challenges",
+        "Inside terminology"
+      ],
+      "copy_patterns": [
+        "Built for [specific audience]",
+        "By [type] for [type]",
+        "The [industry] community"
+      ]
+    }
+  },
+  "cognitive_biases": {
+    "loss_aversion": {
+      "definition": "Losses hurt more than equivalent gains feel good",
+      "application": "Frame inaction as loss",
+      "copy_patterns": [
+        "Don't miss out",
+        "Stop losing [X]",
+        "What's [problem] costing you?",
+        "You could be [outcome] right now"
+      ]
+    },
+    "anchoring": {
+      "definition": "First number sets expectation for subsequent numbers",
+      "application": "Show high value before price",
+      "copy_patterns": [
+        "Total value: $2,997. Your price: $297",
+        "Companies pay consultants $500/hr for this",
+        "Normally $X, today $Y"
+      ]
+    },
+    "confirmation_bias": {
+      "definition": "People seek info that confirms existing beliefs",
+      "application": "Validate their current thinking",
+      "copy_patterns": [
+        "You already know [pain]",
+        "If you've been struggling with...",
+        "You're right to be frustrated"
+      ]
+    },
+    "bandwagon_effect": {
+      "definition": "People do what others are doing",
+      "application": "Emphasize popularity and momentum",
+      "copy_patterns": [
+        "50,000+ can't be wrong",
+        "Fastest growing [category]",
+        "Everyone's switching to..."
+      ]
+    },
+    "zero_risk_bias": {
+      "definition": "People prefer eliminating risk entirely over reducing it",
+      "application": "Offer complete guarantees",
+      "copy_patterns": [
+        "100% money-back guarantee",
+        "Zero risk",
+        "Full refund, no questions"
+      ]
+    },
+    "endowment_effect": {
+      "definition": "People value things more once they own them",
+      "application": "Free trials that create ownership",
+      "copy_patterns": [
+        "Try it as your own for 30 days",
+        "Your free account",
+        "Your personalized dashboard"
+      ]
+    },
+    "contrast_effect": {
+      "definition": "Items seem different when compared to something else",
+      "application": "Show before/after, competitors, alternatives",
+      "copy_patterns": [
+        "Without [product] vs. With [product]",
+        "The old way vs. The new way",
+        "Compare to [expensive alternative]"
+      ]
+    }
+  },
+  "emotional_triggers": {
+    "fear": {
+      "intensity": "high",
+      "use_case": "B2B, security, compliance, health",
+      "copy_patterns": [
+        "What happens if [bad thing]?",
+        "Don't let [risk] happen",
+        "Protect yourself from [threat]"
+      ]
+    },
+    "greed": {
+      "intensity": "high",
+      "use_case": "Finance, business growth, money-making",
+      "copy_patterns": [
+        "Maximize your [revenue/profit]",
+        "Get more [desired thing]",
+        "Unlock [opportunity]"
+      ]
+    },
+    "status": {
+      "intensity": "medium",
+      "use_case": "Premium products, B2B, professional services",
+      "copy_patterns": [
+        "Join industry leaders",
+        "Used by top [professionals]",
+        "The professional choice"
+      ]
+    },
+    "belonging": {
+      "intensity": "medium",
+      "use_case": "Communities, memberships, movements",
+      "copy_patterns": [
+        "Join the community",
+        "Be part of [movement]",
+        "Connect with [peers]"
+      ]
+    },
+    "curiosity": {
+      "intensity": "medium",
+      "use_case": "Content, education, discovery",
+      "copy_patterns": [
+        "Discover the secret",
+        "Find out why",
+        "See what happens when"
+      ]
+    },
+    "guilt": {
+      "intensity": "low",
+      "use_case": "Self-improvement, health, productivity",
+      "copy_patterns": [
+        "You owe it to yourself",
+        "Don't you deserve [outcome]?",
+        "Finally do [thing you've been putting off]"
+      ]
+    }
+  },
+  "hormozi_value_equation_hooks": {
+    "dream_outcome_amplifiers": [
+      "Imagine [vivid success state]",
+      "Picture yourself [achieving goal]",
+      "What would [outcome] mean for you?",
+      "Finally [achieve thing they've wanted]"
+    ],
+    "likelihood_boosters": [
+      "The exact system that generated [result]",
+      "Proven by [X] customers",
+      "Works even if [objection]",
+      "Guaranteed to [outcome]"
+    ],
+    "time_delay_reducers": [
+      "See results in [short timeframe]",
+      "Start [outcome] today",
+      "Instant access",
+      "Your first [outcome] within [time]"
+    ],
+    "effort_minimizers": [
+      "No [technical thing] required",
+      "Just [simple action]",
+      "Done for you",
+      "Works automatically",
+      "Set it and forget it"
+    ]
+  },
+  "copy_intensifiers": {
+    "specificity": {
+      "weak": "Increase your revenue",
+      "strong": "Increase revenue by 37% in 90 days"
+    },
+    "transformation": {
+      "weak": "We help with marketing",
+      "strong": "From zero leads to 50 qualified calls per month"
+    },
+    "sensory_language": {
+      "weak": "Get better results",
+      "strong": "Watch your dashboard light up with new signups"
+    },
+    "future_pacing": {
+      "weak": "You'll be successful",
+      "strong": "Six months from now, you'll look back at this moment as the turning point"
+    }
+  }
+}

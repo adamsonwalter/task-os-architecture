@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GND Optus Civil Quoting — Standard Operating Procedure</title>
+<meta name="description" content="Standard Operating Procedure for GND Optus fibre civil quoting operations. Covers folder architecture, two-file separation protocol, RC4 data integrity, quarterly audit, and human-discipline checkpoints.">
+<meta name="author" content="GND / Damian">
+<meta name="robots" content="noindex,nofollow">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HowTo",
+  "name":"GND Optus Civil Quoting SOP",
+  "description":"End-to-end standard operating procedure for quoting Optus fibre civil works using the GND Quote Cowork system.",
+  "dateModified":"2026-03-26",
+  "author":{"@type":"Organization","name":"GND"},
+  "step":[
+    {"@type":"HowToSection","name":"Receive & Ingest Drawing","position":1},
+    {"@type":"HowToSection","name":"Generate Priced Quote & Integrity Validation","position":2},
+    {"@type":"HowToSection","name":"Separate Internal Control from Commercial Submission","position":3},
+    {"@type":"HowToSection","name":"Update RC4 Quote History","position":4},
+    {"@type":"HowToSection","name":"Submit & Capture Knowledge","position":5}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:1rem;line-height:1.65;color:#1a1a1a;background:#fafaf8;max-width:52rem;margin:0 auto;padding:2rem 1.5rem 4rem}
+h1{font-size:1.75rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.25rem}
+h2{font-size:1.25rem;font-weight:700;margin:2.5rem 0 .75rem;padding-bottom:.35rem;border-bottom:2px solid #e0ddd6}
+h3{font-size:1.05rem;font-weight:600;margin:1.5rem 0 .5rem;color:#333}
+p,li{margin-bottom:.55rem}
+ul,ol{padding-left:1.4rem}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem}
+th,td{text-align:left;padding:.45rem .6rem;border:1px solid #d5d2ca}
+th{background:#eceae4;font-weight:600;white-space:nowrap}
+td code,p code,li code{font-family:Menlo,Consolas,monospace;font-size:.88em;background:#eceae4;padding:.1em .35em;border-radius:3px}
+.subtitle{font-size:.95rem;color:#666;margin-bottom:1.5rem}
+.banner{background:#2a2a2a;color:#fff;padding:.65rem 1rem;border-radius:5px;font-size:.85rem;font-weight:600;margin:1.5rem 0;letter-spacing:.02em}
+.banner.warn{background:#b91c1c}
+.banner.info{background:#1d4ed8}
+.rule{background:#fef9ec;border-left:4px solid #d4a017;padding:.7rem 1rem;margin:1rem 0;font-size:.93rem}
+.checklist{list-style:none;padding-left:0}
+.checklist li{padding:.3rem 0 .3rem 1.6rem;position:relative}
+.checklist li::before{content:"☐";position:absolute;left:0;font-size:1.1em}
+.sep{border:none;border-top:1px solid #e0ddd6;margin:2rem 0}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e0ddd6;font-size:.82rem;color:#888}
+@media(max-width:600px){body{padding:1rem}table{font-size:.82rem}h1{font-size:1.4rem}}
+</style>
+</head>
+<body>
+
+<h1>GND Optus Civil Quoting — SOP</h1>
+<p class="subtitle">Standard Operating Procedure &amp; Human Discipline Guide<br>
+Version 1.0 · 26 Mar 2026 · Damian sign-off required for amendment</p>
+
+<!-- ───────────────────────────────────────── -->
+<h2>1. Purpose</h2>
+<p>This document is the single human-readable reference for how GND quotes Optus fibre civil works using the <strong>GND Quote Cowork</strong> system. It covers the entire lifecycle: receiving a drawing, generating a priced quote, separating internal governance from the commercial submission, maintaining quote history, and the quarterly audit cycle.</p>
+<p>The AI system (Claude Cowork) executes phases automatically based on instruction files in the <code>Instructions/</code> folder. This SOP governs the <em>human</em> steps that surround, gate, and verify the AI's outputs.</p>
+
+<!-- ───────────────────────────────────────── -->
+<h2>2. People &amp; Roles</h2>
+<table>
+<tr><th>Person</th><th>Role</th><th>Key Responsibilities</th></tr>
+<tr><td>Damian</td><td>Owner / Commercial</td><td>Market Overrides, Hard Stop decisions, rate validation sign-off, field intelligence</td></tr>
+<tr><td>Karan</td><td>Estimating / Admin</td><td>Rate card maintenance, RC4 updates, quote submission, knowledge capture completion</td></tr>
+<tr><td>Craig</td><td>Crew Chief / Field</td><td>DCAF execution, site walks, evidence capture, field observations</td></tr>
+</table>
+
+<!-- ───────────────────────────────────────── -->
+<h2>3. Folder Architecture</h2>
+<table>
+<tr><th>Folder</th><th>Purpose</th><th>Rule</th></tr>
+<tr><td><code>Instructions/</code></td><td>AI governing documents (Constitution, Router, Ingestion, System Prompt)</td><td rowspan="3" style="background:#fef9ec;font-weight:600">IMMUTABLE — never edit, delete, or rename files inside these folders</td></tr>
+<tr><td><code>Reference/</code></td><td>Master BoM, rate cards (RC1–RC4), variation triggers</td></tr>
+<tr><td><code>Golden_Templates/</code></td><td>Example quote workbook layout — read-only template shape</td></tr>
+<tr><td><code>Inputs/</code></td><td>Job PDFs and source workbooks per engagement</td><td>Source material. Do not modify originals.</td></tr>
+<tr><td><code>Output/</code></td><td>All derivative files (quotes, DCAF packs, knowledge capture)</td><td style="background:#ecfdf5;font-weight:600">ONLY location where new files are created</td></tr>
+</table>
+
+<div class="rule">
+<strong>The Immutability Rule:</strong> Violating folder immutability is equivalent to violating the margin firewall. It destroys the audit trail. All work produces new files in <code>Output/</code> only.
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<h2>4. AI System Architecture (3 Governing Files)</h2>
+<table>
+<tr><th>File</th><th>Role</th><th>Authority</th></tr>
+<tr><td><code>GND_Constitution.md</code></td><td>Reasoning substrate — 5 commercial principles + output integrity rules</td><td>Highest. Overrides Router and Ingestion.</td></tr>
+<tr><td><code>GND_SKILL_Ingestion.md</code></td><td>Silent drawing scan — builds session caches A–E before any output</td><td>Quality gate. Nothing produced until complete.</td></tr>
+<tr><td><code>GND_SKILL_Router_v1.1.md</code></td><td>Execution engine — phase sequencing, output formats, slash commands</td><td>Operational. Inherits Constitution.</td></tr>
+</table>
+
+<h3>Phase Sequence (<code>/full</code> run)</h3>
+<ol>
+<li><strong>Phase 1</strong> — BoQ Verification (rate matching, gap detection)</li>
+<li><strong>Phase 2</strong> — Priced Quote (sell rates, buy rates internal only, Market Override column)</li>
+<li><strong>Phase V-B</strong> — Quote Integrity Validation (Pub Test, Missing Work, Rate Inversions, Quantity Reconciliation, Damian's 3 Questions)</li>
+<li><strong>Phase 3</strong> — Variation Risk Register (Hard Stops, Amber Gates, provisional sums)</li>
+<li><strong>Phase 4</strong> — Wave 1 DCAF Instructions (crew-readable, Audience B format)</li>
+<li><strong>Phase 5</strong> — Project Timeline &amp; Wave Schedule (with calculation working shown)</li>
+<li><strong>Phase 6</strong> — Cashflow Forecast (assumptions stated before numbers)</li>
+<li><strong>Phase 7</strong> — Knowledge Capture (auto-generated RC4 row — provisional until Phase 8)</li>
+<li><strong>Phase 8</strong> — Output Assembly (two-file separation — see §5)</li>
+</ol>
+
+<!-- ───────────────────────────────────────── -->
+<h2>5. Two-File Output Separation Protocol</h2>
+
+<div class="banner warn">This protocol is mandatory for every bid. It is not optional and does not change with job size or complexity.</div>
+
+<p>Every priced quote run produces <strong>exactly two derivative files</strong> in <code>Output/</code>:</p>
+
+<table>
+<tr><th>File</th><th>Naming</th><th>Contains</th><th>Audience</th></tr>
+<tr>
+<td><strong>Master Internal Control</strong></td>
+<td><code>[ORDER]_Master_Internal_Control_[DATE].xlsx</code></td>
+<td>Every annotation, margin view, rate-card flag, variation register, V-B findings, knowledge capture. Header banner: "INTERNAL — DO NOT SHARE"</td>
+<td>Damian, Karan only</td>
+</tr>
+<tr>
+<td><strong>Commercial Submission</strong></td>
+<td><code>[ORDER]_Submission_Clean_[DATE].xlsx</code></td>
+<td>Golden-template-compliant. Zero flags, zero unresolved items, zero margin data. Minimal "Job Context" sheet with 3 neutral risk bullets.</td>
+<td>Optus / PE / PM</td>
+</tr>
+</table>
+
+<h3>Sanitisation Rules (Submission_Clean only)</h3>
+<ul>
+<li>Remove all colour-coded flags (🔴, ⚠, ❓), "MISSING QTY/RATE", "HARD STOP", "RATE CARD ERROR"</li>
+<li>Remove provisional $0 values for unconfirmed items</li>
+<li>Replace detailed quote notes with: (a) design-version statement if required, (b) GST-exclusion note, (c) one neutral sentence re supplied drawings</li>
+<li>Delete all internal governance sheets (Margin View, Variation Risk Register, etc.)</li>
+<li>Insert minimal "Job Context" sheet — 3 bullets: design version, third-party assets (no owners/$ exposure), council/permit notes</li>
+<li>Re-verify all subtotal/total formulas chain correctly after deletions</li>
+</ul>
+
+<h3>Separation Verification Checklist</h3>
+<ul class="checklist">
+<li>Submission_Clean contains zero buy rates</li>
+<li>Submission_Clean contains zero flags or annotations</li>
+<li>Submission_Clean total matches Internal Control sell-side total</li>
+<li>No master files in Inputs/, Reference/, or Golden_Templates/ were modified</li>
+<li>Both files reside exclusively in Output/</li>
+</ul>
+
+<div class="rule">
+<strong>Human gate:</strong> Before final submission, a human reviewer must confirm the Submission_Clean file is "drama-free" while the Internal Control file remains "forensically complete."
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<h2>6. RC4 Quote History — Data Integrity</h2>
+
+<div class="banner info">RC4 tracks what Optus actually received. Logging the internal full-risk number corrupts every downstream market signal.</div>
+
+<h3>The Rule</h3>
+<p>The "GND Quoted ($)" value in <code>GND_RC4_Quote_History.xlsx</code> must <strong>always</strong> be the TOTAL QUOTED PRICE from the <code>_Submission_Clean</code> file — never the Internal Control total.</p>
+
+<h3>Update Workflow (Karan — after every submission)</h3>
+<ol>
+<li>Open the <code>_Submission_Clean</code> file from <code>Output/</code></li>
+<li>Copy the final TOTAL QUOTED PRICE</li>
+<li>Open <code>Reference/GND_RC4_Quote_History.xlsx</code></li>
+<li>Paste the total into Column G (GND Quoted) for the relevant row</li>
+<li>Enter the submission date in Column B</li>
+<li>Add a one-line note in Key Notes explaining any deliberate deviation from the internal total (e.g. "Clean submission used conservative bore estimates")</li>
+<li>Save. Market Signal Summary auto-updates.</li>
+</ol>
+
+<h3>Sequencing (AI-generated RC4 row)</h3>
+<p>In a <code>/full</code> run, Phase 7 generates a provisional RC4 row <em>before</em> Phase 8 (Output Assembly) runs. Phase 8 emits a confirmation comparing the Submission_Clean total against the Phase 7 provisional. If they differ, Phase 8 provides the corrected RC4 row. Karan uses whichever is final.</p>
+
+<!-- ───────────────────────────────────────── -->
+<h2>7. Rate Card Maintenance</h2>
+<ol>
+<li>After Damian returns a <code>/validate</code> review, Karan updates any flagged rates in the rate cards (RC1-SELL Activities, RC2 Materials), entering the date in the version header</li>
+<li>Damian signs off. Karan re-runs <code>/quote</code> to generate the updated quote</li>
+<li>Any rate change in either RC1-SELL or RC1-COST is reviewed by Damian before the next quote run</li>
+<li>Gap register items (❓ MISSING) are added to the rate card before submission. Recurring items are promoted to the Master BoM</li>
+</ol>
+
+<div class="rule">
+<strong>Rate card drift:</strong> RC1-SELL and RC1-COST must never diverge. Any update to one requires verification of the other. The margin calculation is only reliable when both cards are synchronised.
+</div>
+
+<!-- ───────────────────────────────────────── -->
+<h2>8. Knowledge Capture &amp; /learn Protocol</h2>
+<ol>
+<li>Phase 7 auto-generates a knowledge capture entry at the end of every <code>/full</code> run — outcome marked PENDING</li>
+<li>After Optus responds, Karan triggers <code>/learn [ORDER]</code> and provides:<ul>
+<li>Win or Loss</li>
+<li>Winning bid amount (if known)</li>
+<li>How the job played out vs the drawing</li>
+</ul></li>
+<li>The entry is formatted for paste into the GND Market Intelligence Doc, with tags for suburb, council, PE, carrier, and complexity tier</li>
+<li>An RC4 row is also generated for paste into Quote History</li>
+</ol>
+
+<!-- ───────────────────────────────────────── -->
+<h2>9. Quarterly Audit</h2>
+<p>Every quarter, Damian and Karan conduct a review covering:</p>
+
+<h3>9a. RC4 Integrity Audit</h3>
+<ul class="checklist">
+<li>Every "GND Quoted ($)" value in RC4 matches the corresponding archived <code>_Submission_Clean</code> file in <code>Output/</code></li>
+<li>Any mismatch triggers an immediate RC4 correction — log the Submission_Clean total, add a correction note</li>
+<li>Win/Loss and Winning Bid columns are populated for all closed jobs</li>
+<li>Market Signal Summary reflects accurate data</li>
+</ul>
+
+<h3>9b. Rate Card Audit</h3>
+<ul class="checklist">
+<li>RC1-SELL and RC1-COST are aligned — no unreviewed divergence</li>
+<li>All gap register items from the quarter have been resolved or excluded with rationale</li>
+<li>Market Overrides from the quarter are reviewed: were they justified? Should any become permanent rate changes?</li>
+<li>Subcontractor rates (buy rates) are still current — no structural rate inversions</li>
+</ul>
+
+<h3>9c. Folder &amp; File Hygiene</h3>
+<ul class="checklist">
+<li>No files in <code>Inputs/</code>, <code>Reference/</code>, or <code>Golden_Templates/</code> were modified outside the documented amendment protocol</li>
+<li>Every job in <code>Output/</code> has both <code>_Master_Internal_Control</code> and <code>_Submission_Clean</code> files</li>
+<li>Golden template is still current — update version if Optus format requirements changed</li>
+</ul>
+
+<h3>9d. Knowledge &amp; Intelligence Review</h3>
+<ul class="checklist">
+<li>All closed jobs have a completed Knowledge Capture entry (Phase 7)</li>
+<li>Market Intelligence Doc entries from the quarter are reviewed — any PE behaviour changes, council pattern shifts, or carrier infrastructure updates</li>
+<li>Any new failure modes or anti-patterns identified → proposed as Constitution amendments (Damian proposes, Karan drafts, Damian signs off)</li>
+</ul>
+
+<hr class="sep">
+
+<!-- ───────────────────────────────────────── -->
+<h2>10. Five Constitutional Principles (Reference)</h2>
+<p>These govern every AI output. They are reasoning principles, not rules. The AI executes them silently — this section is for human understanding.</p>
+<ol>
+<li><strong>The Margin Firewall</strong> — Buy rates (RC1-COST) never appear in any external output. The spread between sell and buy is the business. Folders are immutable.</li>
+<li><strong>Provisional Sums Are Not Excuses</strong> — Every provisional sum needs a specific trigger, resolution action, and gate wave. "TBC" is not a resolution.</li>
+<li><strong>Hard Stops Are Hard</strong> — GND does not accept commercial responsibility for elements it cannot control at fixed price. Hard Stops are never softened in language.</li>
+<li><strong>Irreversible Evidence Windows</strong> — Depth of cover, cable serials, bore GPS, duct allocation. Miss them and GND does not get paid. They are payment conditions, not compliance niceties.</li>
+<li><strong>The Two-Audience Rule</strong> — Karan/Damian get tables with numbers. Craig gets imperative checklists in plain English, on a phone, standing up.</li>
+</ol>
+
+<hr class="sep">
+
+<!-- ───────────────────────────────────────── -->
+<h2>11. Amendment Protocol</h2>
+<ol>
+<li>Damian proposes the change</li>
+<li>Karan drafts the amendment in the relevant instruction file</li>
+<li>Damian signs off</li>
+<li>Version number increments. Previous version archived, not deleted</li>
+</ol>
+<p>For Constitution-level changes (Hard Stop definitions, margin firewall, new principles): Damian sign-off is mandatory. For Router or Ingestion tuning (output formats, anomaly patterns, productivity rates): Karan and the Claude expert can implement, with Damian review if it affects Hard Stop classification.</p>
+
+<footer>
+GND Quote Cowork SOP v1.0 · 26 Mar 2026 · This document is internal to GND.<br>
+System: Claude Cowork with GND Constitution v1.0, Router v1.1, Ingestion v1.0.
+</footer>
+
+</body>
+</html>

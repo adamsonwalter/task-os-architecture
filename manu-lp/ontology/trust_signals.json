@@ -1,0 +1,198 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "Trust signal taxonomy for landing page social proof",
+    "lastUpdated": "2025-01-23"
+  },
+  "trust_signal_categories": {
+    "social_proof": {
+      "description": "Evidence that others have used and benefited",
+      "signals": {
+        "testimonials_text": {
+          "impact_score": 3,
+          "requirements": ["name", "outcome", "specificity"],
+          "ideal_format": "Quote with name, title, company, photo",
+          "placement": ["after_value_prop", "near_cta", "dedicated_section"]
+        },
+        "testimonials_video": {
+          "impact_score": 5,
+          "requirements": ["real_customer", "specific_story", "quality_production"],
+          "ideal_format": "60-90 second customer story",
+          "placement": ["dedicated_section", "above_final_cta"]
+        },
+        "case_studies": {
+          "impact_score": 5,
+          "requirements": ["metrics", "process", "outcome"],
+          "ideal_format": "Challenge → Solution → Results with numbers",
+          "placement": ["dedicated_section", "linked_from_testimonials"]
+        },
+        "client_logos": {
+          "impact_score": 3,
+          "requirements": ["recognizable", "relevant_industry", "permission"],
+          "ideal_format": "5-7 grayscale logos, evenly spaced",
+          "placement": ["below_hero", "footer", "above_testimonials"]
+        },
+        "aggregate_stats": {
+          "impact_score": 3,
+          "requirements": ["specific_number", "impressive_scale", "truthful"],
+          "examples": ["50,000+ customers", "10M+ downloads", "$100M+ generated"],
+          "placement": ["hero_micro_bar", "below_hero", "near_cta"]
+        },
+        "star_ratings": {
+          "impact_score": 3,
+          "requirements": ["rating_score", "review_count", "source"],
+          "ideal_format": "★★★★★ 4.9/5 (2,500+ reviews)",
+          "placement": ["hero", "near_cta", "footer"]
+        },
+        "live_notifications": {
+          "impact_score": 1,
+          "requirements": ["real_time", "not_intrusive", "relevant"],
+          "examples": ["John from NYC just signed up", "15 people viewing"],
+          "placement": ["corner_popup", "header_bar"]
+        }
+      }
+    },
+    "authority": {
+      "description": "Evidence of expertise and recognition",
+      "signals": {
+        "media_mentions": {
+          "impact_score": 4,
+          "requirements": ["recognizable_outlets", "logo_permission"],
+          "ideal_format": "As seen in: [Logo] [Logo] [Logo]",
+          "placement": ["below_hero", "footer"]
+        },
+        "expert_endorsements": {
+          "impact_score": 4,
+          "requirements": ["known_expert", "relevant_field", "genuine"],
+          "ideal_format": "Quote with expert photo, credentials, and affiliation",
+          "placement": ["near_testimonials", "above_cta"]
+        },
+        "certifications": {
+          "impact_score": 2,
+          "requirements": ["industry_relevant", "recognized"],
+          "examples": ["Google Partner", "HubSpot Certified", "AWS Partner"],
+          "placement": ["footer", "about_section"]
+        },
+        "awards": {
+          "impact_score": 3,
+          "requirements": ["recent", "relevant", "credible_source"],
+          "examples": ["G2 Leader 2025", "Best of ProductHunt", "Inc 5000"],
+          "placement": ["hero_badge", "footer", "about_section"]
+        },
+        "years_experience": {
+          "impact_score": 1,
+          "requirements": ["truthful", "impressive"],
+          "ideal_format": "Serving customers since 2010",
+          "placement": ["footer", "about_section"]
+        }
+      }
+    },
+    "security_trust": {
+      "description": "Evidence of safety and reliability",
+      "signals": {
+        "ssl_badge": {
+          "impact_score": 2,
+          "requirements": ["active_ssl", "visible_badge"],
+          "placement": ["checkout", "form_area", "footer"]
+        },
+        "compliance_badges": {
+          "impact_score": 3,
+          "requirements": ["actual_compliance", "relevant_to_audience"],
+          "examples": ["GDPR Compliant", "SOC 2", "HIPAA", "ISO 27001"],
+          "placement": ["footer", "near_form", "pricing_page"]
+        },
+        "payment_logos": {
+          "impact_score": 2,
+          "requirements": ["actual_supported_methods"],
+          "examples": ["Visa", "Mastercard", "PayPal", "Stripe"],
+          "placement": ["checkout", "pricing_area", "footer"]
+        },
+        "money_back_guarantee": {
+          "impact_score": 4,
+          "requirements": ["clear_terms", "easy_process"],
+          "ideal_format": "Shield icon + '30-Day Money-Back Guarantee'",
+          "placement": ["near_pricing", "near_cta", "checkout"]
+        },
+        "satisfaction_guarantee": {
+          "impact_score": 3,
+          "requirements": ["specific_promise", "action_if_unmet"],
+          "ideal_format": "If you don't [outcome], we'll [action]",
+          "placement": ["near_pricing", "near_cta"]
+        }
+      }
+    },
+    "proof_of_results": {
+      "description": "Evidence that the product/service delivers",
+      "signals": {
+        "before_after": {
+          "impact_score": 4,
+          "requirements": ["visual_proof", "clear_change", "authentic"],
+          "ideal_format": "Side-by-side comparison with metrics",
+          "placement": ["benefits_section", "testimonials"]
+        },
+        "roi_calculator": {
+          "impact_score": 3,
+          "requirements": ["accurate_math", "interactive"],
+          "ideal_format": "Enter your numbers → See potential savings",
+          "placement": ["value_prop_section", "pricing_area"]
+        },
+        "demo_preview": {
+          "impact_score": 3,
+          "requirements": ["actual_product", "impressive_features"],
+          "ideal_format": "Animated GIF or interactive demo",
+          "placement": ["hero", "features_section"]
+        },
+        "results_timeline": {
+          "impact_score": 3,
+          "requirements": ["specific_milestones", "realistic_timeframe"],
+          "ideal_format": "Week 1: X, Week 2: Y, Month 1: Z",
+          "placement": ["value_prop", "onboarding_preview"]
+        }
+      }
+    }
+  },
+  "trust_stack_recommendations": {
+    "minimum_viable": [
+      "testimonials_text",
+      "aggregate_stats",
+      "money_back_guarantee"
+    ],
+    "standard": [
+      "testimonials_text",
+      "client_logos",
+      "aggregate_stats",
+      "star_ratings",
+      "money_back_guarantee",
+      "payment_logos"
+    ],
+    "premium": [
+      "testimonials_video",
+      "case_studies",
+      "client_logos",
+      "media_mentions",
+      "aggregate_stats",
+      "star_ratings",
+      "compliance_badges",
+      "money_back_guarantee",
+      "awards"
+    ],
+    "enterprise": [
+      "case_studies",
+      "enterprise_logos",
+      "compliance_badges",
+      "security_certifications",
+      "expert_endorsements",
+      "roi_calculator",
+      "satisfaction_guarantee"
+    ]
+  },
+  "placement_rules": {
+    "hero": ["aggregate_stats", "star_ratings", "awards"],
+    "below_hero": ["client_logos", "media_mentions"],
+    "value_section": ["before_after", "roi_calculator", "demo_preview"],
+    "testimonials_section": ["testimonials_text", "testimonials_video", "case_studies"],
+    "near_cta": ["money_back_guarantee", "aggregate_stats", "best_testimonial"],
+    "form_area": ["ssl_badge", "privacy_assurance"],
+    "footer": ["compliance_badges", "payment_logos", "certifications"]
+  }
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Business Review — [Client Name]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom colour palette - adjust per industry */
+        :root {
+            --primary: #2563eb;
+            /* Blue-600 */
+            --secondary: #1e40af;
+            /* Blue-800 */
+            --accent: #f59e0b;
+            /* Amber-500 */
+            --success: #10b981;
+            /* Emerald-500 */
+            --warning: #ef4444;
+            /* Red-500 */
+            --neutral: #6b7280;
+            /* Gray-500 */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold">[Client Name]</h1>
+            <p class="text-xl mt-2 opacity-90">Strategic Business Review</p>
+            <p class="text-sm mt-4 opacity-75">Prepared by Morgan Management Group — [Date]</p>
+        </div>
+    </header>
+
+    <!-- Key Metrics Grid -->
+    <section class="max-w-6xl mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold mb-6">📊 Business Vitals</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Gauge Card: Revenue Rhythm -->
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">Revenue Rhythm</h3>
+                <canvas id="gaugeRevenue" width="150" height="100"></canvas>
+                <p class="text-2xl font-bold mt-2">65%</p>
+            </div>
+
+            <!-- Gauge Card: Operational Maturity -->
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">Operational Maturity</h3>
+                <canvas id="gaugeOperations" width="150" height="100"></canvas>
+                <p class="text-2xl font-bold mt-2">45%</p>
+            </div>
+
+            <!-- Gauge Card: Sales Precision -->
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">Sales Precision</h3>
+                <canvas id="gaugeSales" width="150" height="100"></canvas>
+                <p class="text-2xl font-bold mt-2">55%</p>
+            </div>
+
+            <!-- Gauge Card: Team Clarity -->
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <h3 class="text-sm font-semibold text-gray-600 mb-2">Team Clarity</h3>
+                <canvas id="gaugeTeam" width="150" height="100"></canvas>
+                <p class="text-2xl font-bold mt-2">70%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Pivot -->
+    <section class="max-w-6xl mx-auto px-4 py-8 bg-white rounded-lg shadow-lg my-8">
+        <h2 class="text-2xl font-bold mb-6">🎯 The Strategic Pivot</h2>
+        <div class="h-80">
+            <canvas id="pivotChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Rhythm Projection -->
+    <section class="max-w-6xl mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold mb-6">📈 The Rhythm Effect</h2>
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <canvas id="projectionChart"></canvas>
+        </div>
+    </section>
+
+    <!-- 12-Month Roadmap -->
+    <section class="max-w-6xl mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold mb-6">🗓️ Your 12-Month Journey</h2>
+        <div class="relative">
+            <!-- Timeline line -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-300 hidden md:block"></div>
+
+            <!-- Q1 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center mb-8">
+                <div class="flex-1 text-left md:text-right md:pr-8">
+                    <div class="bg-blue-600 text-white p-4 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg">Q1: Clarity & Control</h3>
+                        <p class="text-sm mt-2">📊 Dashboard visibility</p>
+                        <p class="text-sm">💰 Cash rhythm established</p>
+                        <p class="text-sm">🎯 Fast-yes offer defined</p>
+                    </div>
+                </div>
+                <div class="w-4 h-4 bg-blue-600 rounded-full z-10 my-4 md:my-0 hidden md:block"></div>
+                <div class="flex-1 md:pl-8">
+                    <span class="text-gray-500 text-sm">Months 1-3</span>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center mb-8">
+                <div class="flex-1 text-left md:text-right md:pr-8 md:order-2 md:text-left md:pl-8">
+                    <div class="bg-emerald-600 text-white p-4 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg">Q2: Structure & Flow</h3>
+                        <p class="text-sm mt-2">🔄 Conversion mechanics</p>
+                        <p class="text-sm">📋 Process documentation</p>
+                        <p class="text-sm">⚡ Delivery standards</p>
+                    </div>
+                </div>
+                <div class="w-4 h-4 bg-emerald-600 rounded-full z-10 my-4 md:my-0 hidden md:block md:order-1"></div>
+                <div class="flex-1 md:pr-8 md:order-0 md:text-right">
+                    <span class="text-gray-500 text-sm">Months 4-6</span>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center mb-8">
+                <div class="flex-1 text-left md:text-right md:pr-8">
+                    <div class="bg-violet-600 text-white p-4 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg">Q3: Leverage & Breathe</h3>
+                        <p class="text-sm mt-2">👥 Team leverage</p>
+                        <p class="text-sm">🛠️ Systems that breathe</p>
+                        <p class="text-sm">📅 Weekly rhythms</p>
+                    </div>
+                </div>
+                <div class="w-4 h-4 bg-violet-600 rounded-full z-10 my-4 md:my-0 hidden md:block"></div>
+                <div class="flex-1 md:pl-8">
+                    <span class="text-gray-500 text-sm">Months 7-9</span>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center">
+                <div class="flex-1 text-left md:text-right md:pr-8 md:order-2 md:text-left md:pl-8">
+                    <div class="bg-amber-600 text-white p-4 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg">Q4: Scale & Optionality</h3>
+                        <p class="text-sm mt-2">🚀 Scale with integrity</p>
+                        <p class="text-sm">🏆 Prepare for optionality</p>
+                        <p class="text-sm">🔑 Freedom through structure</p>
+                    </div>
+                </div>
+                <div class="w-4 h-4 bg-amber-600 rounded-full z-10 my-4 md:my-0 hidden md:block md:order-1"></div>
+                <div class="flex-1 md:pr-8 md:order-0 md:text-right">
+                    <span class="text-gray-500 text-sm">Months 10-12</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Disclaimer -->
+    <footer class="bg-gray-800 text-white py-8 px-4 mt-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-xl">Ready to begin your rhythm?</p>
+            <p class="mt-4 opacity-75">Contact Morgan Management Group to start your 12-month coaching journey.</p>
+        </div>
+    </footer>
+
+    <!-- Configurable Disclaimer Footer -->
+    <div class="bg-gray-900 text-gray-400 py-4 px-4 text-center text-sm">
+        <p>Analysis by justine@morganmg.com.au | Data is the property of {{client-call-name}} | Charts may contain
+            errors</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Label wrapping utility
+            function wrapLabel(label, maxWidth) {
+                if (!label || label.length <= maxWidth) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length <= maxWidth) {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    } else {
+                        if (currentLine) lines.push(currentLine);
+                        currentLine = word;
+                    }
+                });
+                if (currentLine) lines.push(currentLine);
+                return lines;
+            }
+
+            // Global Chart.js defaults
+            Chart.defaults.font.family = 'system-ui, -apple-system, sans-serif';
+            Chart.defaults.font.size = 12;
+
+            // Gauge chart configuration factory
+            function createGauge(canvasId, score, color) {
+                const ctx = document.getElementById(canvasId).getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Score', 'Remaining'],
+                        datasets: [{
+                            data: [score, 100 - score],
+                            backgroundColor: [color, '#e5e7eb'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        circumference: 180,
+                        rotation: -90,
+                        cutout: '75%',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { enabled: false }
+                        }
+                    }
+                });
+            }
+
+            // Create gauges
+            createGauge('gaugeRevenue', 65, '#10b981');
+            createGauge('gaugeOperations', 45, '#f59e0b');
+            createGauge('gaugeSales', 55, '#3b82f6');
+            createGauge('gaugeTeam', 70, '#8b5cf6');
+
+            // Strategic Pivot Chart
+            const pivotCtx = document.getElementById('pivotChart').getContext('2d');
+            new Chart(pivotCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Lead Volume', 'Conversion Rate (%)', 'Cash Cycle (Days)', 'Owner Hours/Week'],
+                    datasets: [
+                        {
+                            label: 'Current State',
+                            data: [4000, 5, 90, 60],
+                            backgroundColor: '#ef4444'
+                        },
+                        {
+                            label: 'Target State',
+                            data: [1000, 25, 30, 30],
+                            backgroundColor: '#10b981'
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'From Volume to Precision',
+                            font: { size: 16, weight: 'bold' }
+                        }
+                    }
+                }
+            });
+
+            // Rhythm Projection Chart
+            const projectionCtx = document.getElementById('projectionChart').getContext('2d');
+            new Chart(projectionCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Month 1', 'Month 3', 'Month 6', 'Month 9', 'Month 12'],
+                    datasets: [
+                        {
+                            label: 'Without Structure',
+                            data: [50, 65, 40, 70, 45],
+                            borderColor: '#ef4444',
+                            borderDash: [5, 5],
+                            fill: false,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'With Rhythm',
+                            data: [50, 55, 65, 75, 85],
+                            borderColor: '#10b981',
+                            fill: false,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'The Rhythm Effect: Stability Through Structure',
+                            font: { size: 16, weight: 'bold' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: { display: true, text: 'Business Health Score' },
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

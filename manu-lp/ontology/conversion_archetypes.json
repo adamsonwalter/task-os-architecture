@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "Landing page conversion archetypes by industry and offer type",
+    "lastUpdated": "2025-01-23"
+  },
+  "archetypes": {
+    "saas_free_trial": {
+      "id": "ARCH-001",
+      "name": "SaaS Free Trial",
+      "characteristics": {
+        "awareness_level": "solution_aware",
+        "price_sensitivity": "medium",
+        "decision_timeline": "short",
+        "risk_perception": "low"
+      },
+      "hero_pattern": {
+        "headline_focus": "outcome_speed",
+        "cta_text": ["Start Free Trial", "Try It Free", "Get Started Free"],
+        "micro_copy": ["No credit card required", "Setup in minutes", "Cancel anytime"]
+      },
+      "trust_signals": {
+        "priority": ["customer_logos", "aggregate_stats", "security_badges"],
+        "testimonial_focus": "time_to_value"
+      },
+      "friction_reducers": ["no_credit_card", "instant_access", "free_forever_tier"],
+      "urgency_type": "momentum",
+      "conversion_benchmark": {
+        "average": 3.5,
+        "good": 7.0,
+        "elite": 12.0
+      }
+    },
+    "saas_demo_request": {
+      "id": "ARCH-002",
+      "name": "SaaS Demo/Sales Call",
+      "characteristics": {
+        "awareness_level": "product_aware",
+        "price_sensitivity": "high",
+        "decision_timeline": "long",
+        "risk_perception": "high"
+      },
+      "hero_pattern": {
+        "headline_focus": "transformation",
+        "cta_text": ["Book a Demo", "Schedule a Call", "Talk to Sales"],
+        "micro_copy": ["15-minute call", "No commitment", "Get personalized walkthrough"]
+      },
+      "trust_signals": {
+        "priority": ["enterprise_logos", "case_studies", "compliance_badges"],
+        "testimonial_focus": "roi_outcomes"
+      },
+      "friction_reducers": ["calendar_embed", "time_zone_detection", "async_option"],
+      "urgency_type": "scarcity",
+      "conversion_benchmark": {
+        "average": 2.5,
+        "good": 5.0,
+        "elite": 10.0
+      }
+    },
+    "lead_magnet": {
+      "id": "ARCH-003",
+      "name": "Lead Magnet / Content Download",
+      "characteristics": {
+        "awareness_level": "problem_aware",
+        "price_sensitivity": "none",
+        "decision_timeline": "instant",
+        "risk_perception": "very_low"
+      },
+      "hero_pattern": {
+        "headline_focus": "specific_outcome",
+        "cta_text": ["Get My Free [X]", "Download Now", "Send Me the Guide"],
+        "micro_copy": ["Free instant download", "No spam ever", "Unsubscribe anytime"]
+      },
+      "trust_signals": {
+        "priority": ["download_count", "author_credentials", "preview_image"],
+        "testimonial_focus": "content_quality"
+      },
+      "friction_reducers": ["email_only", "instant_delivery", "preview_content"],
+      "urgency_type": "value_stacking",
+      "conversion_benchmark": {
+        "average": 20.0,
+        "good": 35.0,
+        "elite": 50.0
+      }
+    },
+    "ecommerce_product": {
+      "id": "ARCH-004",
+      "name": "E-commerce Product Page",
+      "characteristics": {
+        "awareness_level": "product_aware",
+        "price_sensitivity": "high",
+        "decision_timeline": "short",
+        "risk_perception": "medium"
+      },
+      "hero_pattern": {
+        "headline_focus": "product_benefit",
+        "cta_text": ["Add to Cart", "Buy Now", "Get Yours"],
+        "micro_copy": ["Free shipping", "30-day returns", "In stock"]
+      },
+      "trust_signals": {
+        "priority": ["star_ratings", "review_count", "trust_badges"],
+        "testimonial_focus": "product_experience"
+      },
+      "friction_reducers": ["guest_checkout", "multiple_payments", "live_chat"],
+      "urgency_type": "scarcity_stock",
+      "conversion_benchmark": {
+        "average": 2.0,
+        "good": 4.0,
+        "elite": 8.0
+      }
+    },
+    "coaching_program": {
+      "id": "ARCH-005",
+      "name": "Coaching / Course / Program",
+      "characteristics": {
+        "awareness_level": "solution_aware",
+        "price_sensitivity": "variable",
+        "decision_timeline": "medium",
+        "risk_perception": "high"
+      },
+      "hero_pattern": {
+        "headline_focus": "transformation",
+        "cta_text": ["Enroll Now", "Join the Program", "Start Your Transformation"],
+        "micro_copy": ["Limited spots", "Lifetime access", "Money-back guarantee"]
+      },
+      "trust_signals": {
+        "priority": ["student_results", "video_testimonials", "curriculum_preview"],
+        "testimonial_focus": "before_after"
+      },
+      "friction_reducers": ["payment_plans", "sample_content", "money_back_guarantee"],
+      "urgency_type": "deadline_cohort",
+      "conversion_benchmark": {
+        "average": 1.5,
+        "good": 3.0,
+        "elite": 6.0
+      }
+    },
+    "webinar_registration": {
+      "id": "ARCH-006",
+      "name": "Webinar / Event Registration",
+      "characteristics": {
+        "awareness_level": "problem_aware",
+        "price_sensitivity": "low",
+        "decision_timeline": "instant",
+        "risk_perception": "low"
+      },
+      "hero_pattern": {
+        "headline_focus": "learning_outcome",
+        "cta_text": ["Save My Seat", "Register Free", "Reserve My Spot"],
+        "micro_copy": ["Free to attend", "Recording available", "Limited spots"]
+      },
+      "trust_signals": {
+        "priority": ["host_credentials", "registrant_count", "past_attendee_quotes"],
+        "testimonial_focus": "webinar_value"
+      },
+      "friction_reducers": ["calendar_add", "reminder_option", "replay_promise"],
+      "urgency_type": "deadline_event",
+      "conversion_benchmark": {
+        "average": 25.0,
+        "good": 40.0,
+        "elite": 55.0
+      }
+    },
+    "agency_service": {
+      "id": "ARCH-007",
+      "name": "Agency / Service Business",
+      "characteristics": {
+        "awareness_level": "solution_aware",
+        "price_sensitivity": "medium",
+        "decision_timeline": "long",
+        "risk_perception": "high"
+      },
+      "hero_pattern": {
+        "headline_focus": "result_mechanism",
+        "cta_text": ["Get a Quote", "Book Discovery Call", "Start a Project"],
+        "micro_copy": ["Custom solutions", "No obligation", "Results guaranteed"]
+      },
+      "trust_signals": {
+        "priority": ["portfolio", "case_studies", "industry_expertise"],
+        "testimonial_focus": "client_outcomes"
+      },
+      "friction_reducers": ["free_audit", "portfolio_preview", "clear_process"],
+      "urgency_type": "capacity",
+      "conversion_benchmark": {
+        "average": 3.0,
+        "good": 6.0,
+        "elite": 10.0
+      }
+    }
+  },
+  "archetype_selection_logic": {
+    "by_offer_type": {
+      "software_trial": "saas_free_trial",
+      "software_demo": "saas_demo_request",
+      "pdf_guide": "lead_magnet",
+      "email_course": "lead_magnet",
+      "checklist": "lead_magnet",
+      "physical_product": "ecommerce_product",
+      "digital_product": "ecommerce_product",
+      "online_course": "coaching_program",
+      "coaching": "coaching_program",
+      "mastermind": "coaching_program",
+      "live_webinar": "webinar_registration",
+      "virtual_event": "webinar_registration",
+      "consulting": "agency_service",
+      "done_for_you": "agency_service"
+    },
+    "modifiers": {
+      "high_ticket": ["add_demo_step", "emphasize_trust", "longer_page"],
+      "low_ticket": ["remove_friction", "shorten_page", "impulse_triggers"],
+      "b2b": ["add_enterprise_signals", "emphasize_roi", "include_compliance"],
+      "b2c": ["emotional_triggers", "social_proof_volume", "simple_language"]
+    }
+  }
+}

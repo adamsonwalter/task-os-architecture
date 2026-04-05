@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "client": {
+    "name": "",
+    "callName": "",
+    "businessName": "",
+    "businessCallName": ""
+  },
+  "word": {
+    "header": {
+      "text": "Strategic Business Review for {{client-call-name}}",
+      "firstPageDifferent": true,
+      "firstPageText": ""
+    },
+    "footer": {
+      "left": "justine@morganmg.com.au",
+      "center": "{{date}}",
+      "right": "Page {{page}}",
+      "dateFormat": "dd-MMM-yyyy",
+      "allPagesSame": true
+    }
+  },
+  "infographic": {
+    "footer": "Analysis by justine@morganmg.com.au | Data is the property of {{client-call-name}} | Charts may contain errors"
+  }
+}
