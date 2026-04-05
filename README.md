@@ -103,3 +103,7 @@ Use the same mechanical steps below when adding workflows; what changes is wheth
 - **The company layer is a knowledge surface, not a governance layer.** It provides context. It doesn't constrain execution.
 - **Start with what works, add structure when you feel the pain.** Shape A is 5 files. Shape B is 12. If Shape A stops being adequate, promote governance files. Don't start governed.
 - **Systems improve through use, not redesign.** Run logs and post-run observations feed back into instruction files. The self-improvement loop is the architecture's most valuable feature.
+
+## Reference (doctrine)
+
+The **final, operational** layout is this repo’s root `README.md`, `BOOTSTRAP.md`, `company/`, and `_starters/`. For the underlying **Company Core → Task OS → Project Instance** doctrine (maps to `company/` → workflow folders → optional `jobs/`), see **`docs/architecture/Architectural_Constitution.md`** and **`docs/README.md`** (precedence if anything reads differently).
