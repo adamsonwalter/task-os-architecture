@@ -107,3 +107,5 @@ Use the same mechanical steps below when adding workflows; what changes is wheth
 ## Reference (doctrine)
 
 The **final, operational** layout is this repo’s root `README.md`, `BOOTSTRAP.md`, `company/`, and `_starters/`. For the underlying **Company Core → Task OS → Project Instance** doctrine (maps to `company/` → workflow folders → optional `jobs/`), see **`docs/architecture/Architectural_Constitution.md`** and **`docs/README.md`** (precedence if anything reads differently).
+
+**Macro vs micro (philosophy only):** This repo defines the **large-scale** task system. A **folder-level** execution layer (constitution + procedures + human lens + closure) is optional and usually **later**—see **`docs/philosophy/macro_and_micro.md`**. It is not a required client deliverable and not tied to any particular external product.

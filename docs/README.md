@@ -18,3 +18,9 @@ If anything here **conflicts** with those files on **how to lay out a client rep
 | File | Role |
 |------|------|
 | `Architectural_Constitution.md` | Governing doctrine: **Company Core → Task OS → Project Instance** (maps to `company/` → workflow folders → optional `jobs/`). Kept for audit, onboarding, and “why we didn’t build a monolithic company OS.” |
+
+## `philosophy/`
+
+| File | Role |
+|------|------|
+| `macro_and_micro.md` | Same **intent** at two scales: Task OS–level structure vs optional folder-level execution—aligned vocabulary, **no** required cross-product integration. |
